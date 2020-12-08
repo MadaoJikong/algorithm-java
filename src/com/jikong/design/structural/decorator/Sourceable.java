@@ -8,5 +8,8 @@ package com.jikong.design.structural.decorator;
  * @date 2020/12/8 10:44
  */
 public interface Sourceable {
+    /**
+     * 需要装饰的方法
+     */
     void method();
 }
