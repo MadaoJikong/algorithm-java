@@ -1,0 +1,8 @@
+创建型 设计模式
+
+singleton 单例
+simple 简单工厂
+method 工厂方法
+abstract 抽象工程
+builder 建造者
+prototype 原型模式
