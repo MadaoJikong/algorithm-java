@@ -16,6 +16,6 @@ public class Main {
         oneHandler.setHandler(twoHandler);
         twoHandler.setHandler(threeHandler);
 
-        twoHandler.operation();
+        oneHandler.operation();
     }
 }
