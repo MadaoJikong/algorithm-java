@@ -8,7 +8,7 @@ import java.util.List;
  * @author chengjunchao
  * @title: Test
  * @projectName algorithm-java
- * @description: 自己写
+ * @description: 练习
  * @date 2020/12/21 11:12
  */
 public class Test {
