@@ -19,6 +19,9 @@ public class Kmp {
     }
 
     int search(String haystack, String needle) {
+        if (needle.length() == 0) {
+            return 0;
+        }
         int[] next = new int[needle.length()];
         //先组装 next
         int j = 0;
