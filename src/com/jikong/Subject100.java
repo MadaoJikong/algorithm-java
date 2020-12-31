@@ -77,6 +77,28 @@ public class Subject100 {
         return true;
     }
 
+    /**
+     * 深度遍历
+     *
+     * @param p
+     * @param q
+     * @return
+     */
+    public boolean isSameTree1(TreeNode p, TreeNode q) {
+        if ((p == null && q != null) || (p != null && q == null)) {
+            return false;
+        }
+        if ((p != null && q != null) && (p.val != q.val)) {
+            return false;
+        }
+        if (p != null && q != null) {
+            boolean l = isSameTree1(p.left, q.left);
+            boolean r = isSameTree1(p.right, q.right);
+            return l && r;
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         Subject100 subject100 = new Subject100();
         Subject100.TreeNode treeNode1 = subject100.new TreeNode(1);
@@ -91,7 +113,7 @@ public class Subject100 {
         treeNodeN1.left = treeNode2;
         treeNodeN1.right = treeNodeN3;
 
-        boolean b = subject100.isSameTree(treeNode1, treeNodeN1);
+        boolean b = subject100.isSameTree1(treeNode1, treeNodeN1);
         System.out.println(b);
     }
 }
