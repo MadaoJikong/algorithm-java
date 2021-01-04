@@ -1,9 +1,6 @@
 package com.jikong;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author chengjunchao
@@ -74,12 +71,47 @@ public class Subject101 {
      * @return
      */
     public boolean isSymmetric1(TreeNode root) {
-
-        return false;
+        if (root == null) {
+            return true;
+        }
+        return check1(root, root);
     }
 
     private boolean check1(TreeNode l, TreeNode r) {
-        return false;
+        //l 使用深度遍历  先左子树，    r使用深度遍历 先右子树
+        Stack<TreeNode> lStack = new Stack<>();
+        Stack<TreeNode> rStack = new Stack<>();
+        lStack.push(l);
+        rStack.push(r);
+
+        while (lStack.size() == rStack.size() && lStack.size() > 0) {
+            TreeNode lTreeNode = lStack.pop();
+            TreeNode rTreeNode = rStack.pop();
+            if (lTreeNode.val != rTreeNode.val) {
+                return false;
+            }
+            if (lTreeNode.right != null && rTreeNode.left == null) {
+                return false;
+            }
+            if (lTreeNode.right == null && rTreeNode.left != null) {
+                return false;
+            }
+            if (lTreeNode.left != null && rTreeNode.right == null) {
+                return false;
+            }
+            if (lTreeNode.left == null && rTreeNode.right != null) {
+                return false;
+            }
+            if (lTreeNode.right != null) {
+                lStack.push(lTreeNode.right);
+                rStack.push(rTreeNode.left);
+            }
+            if (lTreeNode.left != null) {
+                lStack.push(lTreeNode.left);
+                rStack.push(rTreeNode.right);
+            }
+        }
+        return true;
     }
 
     public static void main(String[] args) {
@@ -109,7 +141,9 @@ public class Subject101 {
 //        treeNode2.right = treeNode5;
 //        treeNode3.right = treeNode7;
 
-        boolean b = subject101.isSymmetric(treeNode1);
+        //boolean b = subject101.isSymmetric(treeNode1);
+        //System.out.println(b);
+        boolean b = subject101.isSymmetric1(treeNode1);
         System.out.println(b);
     }
 }
