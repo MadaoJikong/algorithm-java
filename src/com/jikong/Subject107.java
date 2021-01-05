@@ -1,8 +1,6 @@
 package com.jikong;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author chengjunchao
@@ -30,6 +28,13 @@ public class Subject107 {
         return list;
     }
 
+    /**
+     * 深度遍历
+     *
+     * @param root
+     * @param list
+     * @param index
+     */
     private void dfs(TreeNode root, List<List<Integer>> list, int index) {
         if (root == null) {
             return;
@@ -42,6 +47,38 @@ public class Subject107 {
         dfs(root.left, list, index + 1);
         dfs(root.right, list, index + 1);
     }
+
+    public List<List<Integer>> levelOrderBottom1(TreeNode root) {
+        List<List<Integer>> list = new ArrayList<>();
+        bfs(root, list);
+        Collections.reverse(list);
+        return list;
+    }
+
+    private void bfs(TreeNode root, List<List<Integer>> list) {
+        if (root == null) {
+            return;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        while (queue.size() > 0) {
+            int size = queue.size();
+            List<Integer> ls = new ArrayList<>();
+            list.add(ls);
+            //扩散
+            for (int i = 0; i < size; i++) {
+                TreeNode treeNode = queue.poll();
+                ls.add(treeNode.val);
+                if (treeNode.left != null) {
+                    queue.offer(treeNode.left);
+                }
+                if (treeNode.right != null) {
+                    queue.offer(treeNode.right);
+                }
+            }
+        }
+    }
+
 
     public static void main(String[] args) {
         Subject107 subject107 = new Subject107();
@@ -65,7 +102,9 @@ public class Subject107 {
         treeNode2.left = treeNode4;
         treeNode3.right = treeNode5;
 
-        List<List<Integer>> list = subject107.levelOrderBottom(treeNode1);
+//        List<List<Integer>> list = subject107.levelOrderBottom(treeNode1);
+//        System.out.println(list);
+        List<List<Integer>> list = subject107.levelOrderBottom1(treeNode1);
         System.out.println(list);
     }
 }
