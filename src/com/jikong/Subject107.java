@@ -1,6 +1,7 @@
 package com.jikong;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -23,40 +24,48 @@ public class Subject107 {
     }
 
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
-        f(root);
-        return null;
+        List<List<Integer>> list = new ArrayList<>();
+        dfs(root, list, 1);
+        Collections.reverse(list);
+        return list;
     }
 
-    private List<Integer> f(TreeNode root) {
-
+    private void dfs(TreeNode root, List<List<Integer>> list, int index) {
         if (root == null) {
-            return null;
+            return;
         }
-        List<Integer> l = f(root.left);
-        List<Integer> r = f(root.right);
-        List<Integer> list = new ArrayList<>();
-        if (l != null) {
-            list.add(root.left.val);
+        if (list.size() < index) {
+            List<Integer> ls = new ArrayList<>();
+            list.add(ls);
         }
-        if (r != null) {
-            list.add(root.right.val);
-        }
-        return list;
+        list.get(index - 1).add(root.val);
+        dfs(root.left, list, index + 1);
+        dfs(root.right, list, index + 1);
     }
 
     public static void main(String[] args) {
         Subject107 subject107 = new Subject107();
-        TreeNode treeNode3 = subject107.new TreeNode(3);
-        TreeNode treeNode9 = subject107.new TreeNode(9);
-        TreeNode treeNode20 = subject107.new TreeNode(20);
-        TreeNode treeNode15 = subject107.new TreeNode(15);
-        TreeNode treeNode7 = subject107.new TreeNode(7);
-        treeNode3.left = treeNode9;
-        treeNode3.right = treeNode20;
-        treeNode20.left = treeNode15;
-        treeNode20.right = treeNode7;
+//        TreeNode treeNode3 = subject107.new TreeNode(3);
+//        TreeNode treeNode9 = subject107.new TreeNode(9);
+//        TreeNode treeNode20 = subject107.new TreeNode(20);
+//        TreeNode treeNode15 = subject107.new TreeNode(15);
+//        TreeNode treeNode7 = subject107.new TreeNode(7);
+//        treeNode3.left = treeNode9;
+//        treeNode3.right = treeNode20;
+//        treeNode20.left = treeNode15;
+//        treeNode20.right = treeNode7;
 
-        List<List<Integer>> list = subject107.levelOrderBottom(treeNode3);
+        TreeNode treeNode1 = subject107.new TreeNode(1);
+        TreeNode treeNode2 = subject107.new TreeNode(2);
+        TreeNode treeNode3 = subject107.new TreeNode(3);
+        TreeNode treeNode4 = subject107.new TreeNode(4);
+        TreeNode treeNode5 = subject107.new TreeNode(5);
+        treeNode1.left = treeNode2;
+        treeNode1.right = treeNode3;
+        treeNode2.left = treeNode4;
+        treeNode3.right = treeNode5;
+
+        List<List<Integer>> list = subject107.levelOrderBottom(treeNode1);
         System.out.println(list);
     }
 }
