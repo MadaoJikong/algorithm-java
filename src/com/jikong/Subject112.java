@@ -21,7 +21,7 @@ public class Subject112 {
     }
 
     /**
-     * 深度遍历  计算
+     * 深度遍历 递归实现
      *
      * @param root
      * @param sum
@@ -31,20 +31,46 @@ public class Subject112 {
         if (root == null) {
             return false;
         }
+        if (root.left == null && root.right == null) {
+            if (sum == root.val) {
+                return true;
+            }
+            return false;
+        }
+        return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
+    }
+
+    /**
+     * 深度遍历 集合方式
+     *
+     * @param root
+     * @param sum
+     * @return
+     */
+    public boolean hasPathSumDFS(TreeNode root, int sum) {
+        if (root == null) {
+            return false;
+        }
         Stack<TreeNode> stack = new Stack<>();
+        Stack<Integer> stackVal = new Stack<>();
         stack.push(root);
+        stackVal.push(root.val);
         while (!stack.isEmpty()) {
             TreeNode treeNode = stack.pop();
-            if (treeNode.right != null) {
-                stack.push(treeNode.right);
+            Integer value = stackVal.pop();
+            if (treeNode.left == null && treeNode.right == null) {
+                if (value == sum) {
+                    return true;
+                }
             }
             if (treeNode.left != null) {
                 stack.push(treeNode.left);
+                stackVal.push(treeNode.left.val + value);
             }
-            if (treeNode.left == null && treeNode.right == null) {
-
+            if (treeNode.right != null) {
+                stack.push(treeNode.right);
+                stackVal.push(treeNode.right.val + value);
             }
-            System.out.println(treeNode.val);
         }
         return false;
     }
@@ -69,7 +95,7 @@ public class Subject112 {
         treeNode8.right = treeNode41;
         treeNode41.right = treeNode1;
 
-        boolean b = subject112.hasPathSum(treeNode5, 22);
+        boolean b = subject112.hasPathSumDFS(treeNode5, 22);
         System.out.println(b);
     }
 }
