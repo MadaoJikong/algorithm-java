@@ -1,5 +1,7 @@
 package com.jikong;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -75,6 +77,46 @@ public class Subject112 {
         return false;
     }
 
+    /**
+     * 广度优先
+     *
+     * @param root
+     * @param sum
+     * @return
+     */
+    public boolean hasPathSumBFS(TreeNode root, int sum) {
+        if (root == null) {
+            return false;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        Queue<Integer> queueVal = new LinkedList<>();
+        queue.offer(root);
+        queueVal.offer(root.val);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            //循环 全把节点读到， 读完 把下一层加进去
+            for (int i = 0; i < size; i++) {
+                TreeNode treeNode = queue.poll();
+                int value = queueVal.poll();
+                if (treeNode.left == null && treeNode.right == null) {
+                    if (sum == value) {
+                        return true;
+                    }
+                }
+                //添加
+                if (treeNode.left != null) {
+                    queue.offer(treeNode.left);
+                    queueVal.offer(treeNode.left.val + value);
+                }
+                if (treeNode.right != null) {
+                    queue.offer(treeNode.right);
+                    queueVal.offer(treeNode.right.val + value);
+                }
+            }
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         Subject112 subject112 = new Subject112();
         TreeNode treeNode5 = subject112.new TreeNode(5);
@@ -95,7 +137,7 @@ public class Subject112 {
         treeNode8.right = treeNode41;
         treeNode41.right = treeNode1;
 
-        boolean b = subject112.hasPathSumDFS(treeNode5, 22);
+        boolean b = subject112.hasPathSumBFS(treeNode5, 22);
         System.out.println(b);
     }
 }
