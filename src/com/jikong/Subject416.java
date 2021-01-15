@@ -10,6 +10,7 @@ package com.jikong;
 public class Subject416 {
     boolean canPartition(int[] nums) {
         //可以搞成背包问题。数组的sum 平分，凑够
+        // dp
         return false;
     }
 
