@@ -27,8 +27,10 @@ public class SubjectPack01 {
                     dp[i][j] = 0;
                 } else {
                     if (i - wt[j - 1] < 0) {
+                        //当物品放不到包里时 就是上次的价值
                         dp[i][j] = dp[i][j - 1];
                     } else {
+                        //不放物品的价值是多少，  放了后的价值 + 上个状态的价值
                         dp[i][j] = Math.max(dp[i][j - 1], dp[i - wt[j - 1]][j - 1] + val[j - 1]);
                     }
                 }
