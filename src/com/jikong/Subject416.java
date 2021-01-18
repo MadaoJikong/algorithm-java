@@ -10,7 +10,20 @@ package com.jikong;
 public class Subject416 {
     boolean canPartition(int[] nums) {
         //可以搞成背包问题。数组的sum 平分，凑够
+        int n = nums.length;
+        int sums = 0;
+        for (int i = 0; i < n; n++) {
+            sums += nums[i];
+        }
+        if (sums % 2 != 0) {
+            return false;
+        } else {
+            sums = sums / 2;
+        }
         // dp
+        int[][] dp = new int[n][sums];
+        //初始化
+        //for()
         return false;
     }
 
