@@ -128,27 +128,25 @@ public class AvlTree {
             int com = compare(key, tree.key);
             if (com < 0) {
                 tree.left = insert(tree.left, key);
-                tree.height = max(tree.height, tree.left.height + 1);
-//                if (height(tree.left) - height(tree.right) == 2) {
-//                    if (compare(key, tree.left.key) < 0) {
-//                        tree = leftLeftRotation(tree);
-//                    } else {
-//                        tree = leftRightRotation(tree);
-//                    }
-//                }
+                if (height(tree.left) - height(tree.right) == 2) {
+                    if (compare(key, tree.left.key) < 0) {
+                        tree = leftLeftRotation(tree);
+                    } else {
+                        tree = leftRightRotation(tree);
+                    }
+                }
             } else if (com > 0) {
                 tree.right = insert(tree.right, key);
-                tree.height = max(tree.height, tree.right.height + 1);
-//                if (height(tree.right) - height(tree.left) == 2) {
-//                    if (compare(tree.right.key, key) > 0) {
-//                        tree = rightRightRotation(tree);
-//                    } else {
-//                        tree = rightLeftRotation(tree);
-//                    }
-//                }
+                if (height(tree.right) - height(tree.left) == 2) {
+                    if (compare(key, tree.right.key) > 0) {
+                        tree = rightRightRotation(tree);
+                    } else {
+                        tree = rightLeftRotation(tree);
+                    }
+                }
             } else {
-                tree.right = insert(tree.right, key);
-                tree.height = max(tree.height, tree.right.height + 1);
+//                tree.right = insert(tree.right, key);
+//                tree.height = max(tree.height, tree.right.height + 1);
 //                if (height(tree.right) - height(tree.left) == 2) {
 //                    if (compare(tree.right.key, key) > 0) {
 //                        tree = rightRightRotation(tree);
@@ -158,6 +156,7 @@ public class AvlTree {
 //                }
             }
         }
+        tree.height = max(height(tree.left), height(tree.right)) + 1;
         return tree;
     }
 

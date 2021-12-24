@@ -11,12 +11,12 @@ public class Main {
     public static void main(String[] args) {
         AvlTree avlTree = new AvlTree();
         avlTree.insert(10);
-        avlTree.insert(1);
         avlTree.insert(2);
+        avlTree.insert(1);
         avlTree.insert(3);
         avlTree.insert(11);
-        avlTree.insert(10);
-        avlTree.insert(14);
+//        avlTree.insert(9);
+//        avlTree.insert(14);
 
         avlTree.bfs();
     }
