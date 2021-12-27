@@ -72,6 +72,15 @@ public class AvlTree {
         }
     }
 
+    private void inOrder(TreeNode tree) {
+        if (tree != null) {
+            inOrder(tree.left);
+            System.out.print(tree.key + " ");
+            inOrder(tree.right);
+        }
+    }
+
+
     /**
      * 广度遍历
      */
@@ -118,6 +127,11 @@ public class AvlTree {
 
     public void preOrder() {
         preOrder(root);
+    }
+
+    public void inOrder() {
+        inOrder(root);
+        System.out.println();
     }
 
     private TreeNode insert(TreeNode tree, int key) {
