@@ -1,4 +1,4 @@
-package com.jikong.alg.structure.graph.adjacency;
+package com.jikong.alg.structure.graph.list;
 
 /**
  * 节点
