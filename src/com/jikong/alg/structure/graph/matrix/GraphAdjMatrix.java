@@ -139,4 +139,11 @@ public class GraphAdjMatrix {
             }
         }
     }
+
+    /**
+     * 输入一幅图和一个起点 start，计算 start 到其他节点的最短距离
+     */
+    public int[] dijkstra(int start) {
+        return new int[10];
+    }
 }
