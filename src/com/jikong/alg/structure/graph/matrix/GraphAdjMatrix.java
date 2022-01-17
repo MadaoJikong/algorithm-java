@@ -5,6 +5,7 @@ import java.util.Queue;
 
 /**
  * 邻接矩阵
+ * https://www.cnblogs.com/rainday1/p/6580423.html
  *
  * @author chengjunchao
  * @version 1.0.0
@@ -117,22 +118,24 @@ public class GraphAdjMatrix {
         isVisited[i] = true;
         queue.offer(i);
         while (!queue.isEmpty()) {
-            int m = -1;
-            int j = queue.poll();
-            int n = getFirstNeighbor(j);
-            if (n > 0) {
-                isVisited[n] = true;
-                System.out.print(vexs[n] + " ");
+            int w = queue.poll();
+            int v = getFirstNeighbor(w);
+            if (v != -1 && !isVisited[v]) {
+                if (v > -1) {
+                    isVisited[v] = true;
+                    System.out.print(vexs[v] + " ");
+                    queue.offer(v);
+                }
             }
-            while (m != -1) {
-                if (!isVisited[m]) {
-                    if (m > 0) {
-                        isVisited[m] = true;
-                        System.out.print(vexs[m] + " ");
-                        queue.offer(m);
+            while (v != -1) {
+                v = getNextNeighbor(w, v);
+                if (v != -1 && !isVisited[v]) {
+                    if (v > -1) {
+                        isVisited[v] = true;
+                        System.out.print(vexs[v] + " ");
+                        queue.offer(v);
                     }
                 }
-                m = getNextNeighbor(j, n);
             }
         }
     }
