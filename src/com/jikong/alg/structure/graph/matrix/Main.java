@@ -83,6 +83,9 @@ public class Main {
         graphAdjMatrix.insertEdge(5, 5, 0);
 
         // 上海 到 各地的最短路径
-
+        int[] n = graphAdjMatrix.dijkstra(1);
+        for (int i = 0; i < n.length; i++) {
+            System.out.print(n[i] + " ");
+        }
     }
 }
