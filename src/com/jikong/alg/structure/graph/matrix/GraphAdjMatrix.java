@@ -7,6 +7,7 @@ import java.util.*;
 /**
  * 邻接矩阵
  * https://www.cnblogs.com/rainday1/p/6580423.html
+ * https://labuladong.gitee.io/algo/2/19/43/
  *
  * @author chengjunchao
  * @version 1.0.0
