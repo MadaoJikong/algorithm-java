@@ -37,6 +37,7 @@ public class Main {
 //        graphAdjMatrix.breadFirstSearch();
 
         // 最短路径优先
+        // 武汉 上海 长沙 南京 成都 广州
         graphAdjMatrix.vexs = new Point[]{new Point("武汉"), new Point("上海"), new Point("长沙"), new Point("南京"), new Point("成都"), new Point("广州")};
         graphAdjMatrix.isVisited = new boolean[]{false, false, false, false, false, false};
         graphAdjMatrix.edges = new int[graphAdjMatrix.vexs.length][graphAdjMatrix.vexs.length];
