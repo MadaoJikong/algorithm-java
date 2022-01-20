@@ -1,11 +1,12 @@
 package com.jikong.alg.structure.graph.list;
 
 /**
- * 节点
+ * 邻接表
  *
  * @author chengjunchao
  * @version 1.0.0
- * @date 2022/1/12 16:09
+ * @date 2022/1/20 10:48
  */
-public class Node {
+public class GraphAdjList {
+    public EdgeNode[] edgeNodes;
 }

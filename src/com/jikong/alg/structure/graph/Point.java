@@ -1,4 +1,4 @@
-package com.jikong.alg.structure.graph.matrix;
+package com.jikong.alg.structure.graph;
 
 /**
  * 矩阵

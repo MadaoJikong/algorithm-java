@@ -1,5 +1,7 @@
 package com.jikong.alg.structure.graph.matrix;
 
+import com.jikong.alg.structure.graph.Point;
+
 /**
  * main
  *
