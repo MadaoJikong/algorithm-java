@@ -8,5 +8,5 @@ package com.jikong.alg.structure.graph.list;
  * @date 2022/1/20 10:48
  */
 public class GraphAdjList {
-    public EdgeNode[] edgeNodes;
+    public VexNode[] vexNodes;
 }
