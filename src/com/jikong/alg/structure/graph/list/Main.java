@@ -56,7 +56,7 @@ public class Main {
         VexNode vexNode5 = new VexNode(new Point("广州"), edgeNode5, 5);
 
         VexNode[] vexNodes = new VexNode[]{vexNode0, vexNode1, vexNode2, vexNode3, vexNode4, vexNode5};
-
+        graphAdjList.isVisited = new boolean[]{false, false, false, false, false, false};
         graphAdjList.vexNodes = vexNodes;
     }
 }
