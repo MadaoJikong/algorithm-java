@@ -58,5 +58,8 @@ public class Main {
         VexNode[] vexNodes = new VexNode[]{vexNode0, vexNode1, vexNode2, vexNode3, vexNode4, vexNode5};
         graphAdjList.isVisited = new boolean[]{false, false, false, false, false, false};
         graphAdjList.vexNodes = vexNodes;
+        graphAdjList.depthFirstSearch();
+        System.out.println("-----------------------");
+        graphAdjList.breadFirstSearch();
     }
 }
