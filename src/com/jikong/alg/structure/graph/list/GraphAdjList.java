@@ -130,18 +130,22 @@ public class GraphAdjList {
     private void breadFirstSearch(int v) {
         Queue<Integer> queue = new LinkedList<>();
         queue.offer(v);
+        if (!isVisited[v]) {
+            isVisited[v] = true;
+            System.out.print(vexNodes[v].data.name + " ");
+        }
         while (!queue.isEmpty()) {
-            int w = queue.poll();
-            if (!isVisited[w]) {
-                isVisited[w] = true;
-                System.out.print(vexNodes[w].data.name + " ");
-            }
-            List<Integer> ids = adj(w);
-            for (int i = 0; i < ids.size(); i++) {
-                if (!isVisited[ids.get(i)]) {
-                    isVisited[ids.get(i)] = true;
-                    System.out.print(vexNodes[ids.get(i)].data.name + " ");
-                    queue.offer(ids.get(i));
+            // 扩散
+            int we = queue.size();
+            for (int n = 0; n < we; n++) {
+                int w = queue.poll();
+                List<Integer> ids = adj(w);
+                for (int i = 0; i < ids.size(); i++) {
+                    if (!isVisited[ids.get(i)]) {
+                        isVisited[ids.get(i)] = true;
+                        System.out.print(vexNodes[ids.get(i)].data.name + " ");
+                        queue.offer(ids.get(i));
+                    }
                 }
             }
         }
